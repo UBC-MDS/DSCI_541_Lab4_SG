@@ -292,7 +292,28 @@ Cons: accuracy-fairness trade-off and creates artificial unfairness
 > the model becomes 'worse' for the sake of being fair
 > this method of equalizing degrades accuracy for the priviliged group instead of increasing accuracy for the disadvantaged group, which may serve to create a different kind of unfairness for individuals
 
-D. This approach directly integrates fairness-centered constaints into the model's training process so that it is learned throughout
+Stakeholder Perspectives:
+
+1. The Justice System (Prosecutors, DAs, Judges)
+
+- the largest tensions here are between liability, constitutional rights, and public safety
+- with the reduction in disparities, the defensibility of court decisions increases and standardizing this error management can increase reliability or predictability of the algorithm
+- however, specifically selecting for race as a method of controlling bias is generally not allowed constitutionally and the overall drop in accuracy may render this useless as a tool
+
+2. The accused
+
+- there may be direct relief for those coming from disadvantaged groups, as biases that go against them are being corrected for
+- however, the creation of a false unfairness for individuals from the advantaged groups is causing another kind of harm that may also need to be corrected for
+- overall, there is a lack of transparency and correcting scores post-prediction can only serve to add to this confusion
+
+3. Society at large
+
+- mitigates the feedback loop of racial inequality that is present in many societal systems
+- can restore public faith and trust in criminal case decisions, especially from disadvantaged groups
+- however, sacrificing accuracy for fairness can put overall public safety at risk
+- correcting for race does not address underlying confounders or effects of a racist system that trained the biased model to begin with
+
+D. This approach directly integrates fairness-centered constaints into the model's training process so that it is learned throughout. Although there are some cons, we generally agreed this was the best method and the SHAP usage was effective in this particular case.
 
 Pros: optimal fairness-accuracy tradeoff (thus far)
 
