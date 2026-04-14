@@ -283,14 +283,14 @@ C. This approach involves optimizing decision thresholds after the model has mad
 
 Pros: reduces between-group disparities
 
-> any explicitly harmful bias (like the direct critique that African-Americans have unfairly high FP rates) is reduced
-> mathematically equal outcome is guaranteed, by forcing the TP and FP rates to be equal across the groups
+> - any explicitly harmful bias (like the direct critique that African-Americans have unfairly high FP rates) is reduced
+> - mathematically equal outcome is guaranteed, by forcing the TP and FP rates to be equal across the groups
 
 Cons: accuracy-fairness trade-off and creates artificial unfairness
 
-> the model is no longer optimizing JUST for accuracy, so other performance metrics like Recall may drop
-> the model becomes 'worse' for the sake of being fair
-> this method of equalizing degrades accuracy for the priviliged group instead of increasing accuracy for the disadvantaged group, which may serve to create a different kind of unfairness for individuals
+> - the model is no longer optimizing JUST for accuracy, so other performance metrics like Recall may drop
+> - the model becomes 'worse' for the sake of being fair
+> - this method of equalizing degrades accuracy for the priviliged group instead of increasing accuracy for the disadvantaged group, which may serve to create a different kind of unfairness for individuals
 
 Stakeholder Perspectives:
 
@@ -317,15 +317,15 @@ D. This approach directly integrates fairness-centered constaints into the model
 
 Pros: optimal fairness-accuracy tradeoff (thus far)
 
-> out of all listed methods, this one seems to be the most robust and balanced approach for both fairness and accuracy
-> overall accuracy and other performance metrics kept high while mitigating bias
+> - out of all listed methods, this one seems to be the most robust and balanced approach for both fairness and accuracy
+> - overall accuracy and other performance metrics kept high while mitigating bias
 
 Cons: interaction effects, confounders, and overcorrection
 
-> any nuanced interaction effects (intersectionality) is ignored by correcting for features one at a time
-> correcting for single marginal effects does not account for intersectional bias (such as race interacting with age)
-> although accuracy stayed high in this case, there is a risk of overcorrecting with the balancing and sacrificing accuracy by penalizing sensitive, highly correlated features
-> there may be other confounder variables or 'invisible' effects that are not being controlled for within this model, such as historical data (e.g. previous arrests) that is already filled with bias
+> - any nuanced interaction effects (intersectionality) is ignored by correcting for features one at a time
+> - correcting for single marginal effects does not account for intersectional bias (such as race interacting with age)
+> - although accuracy stayed high in this case, there is a risk of overcorrecting with the balancing and sacrificing accuracy by penalizing sensitive, highly correlated features
+> - there may be other confounder variables or 'invisible' effects that are not being controlled for within this model, such as historical data (e.g. previous arrests) that is already filled with bias
 
 ## Question 2.4 (Challenging)
 
