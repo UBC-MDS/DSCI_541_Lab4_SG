@@ -110,7 +110,7 @@ rubric={reasoning:100}
    
 </div>
 
-OUTLINE SUBMITTED BY THE END OF THE LAB (if applicable)
+OUTLINE SUBMITTED BY THE END OF THE LAB (if applicable): Peter
 
 1. True Positive: correctly identifying people who can pay back the loan
    False Positive: approving applicants who will default on a loan
@@ -126,6 +126,9 @@ OUTLINE SUBMITTED BY THE END OF THE LAB (if applicable)
 - FP: applicants get approved for a loan they can't pay back, which can lead to financial hardship and affect their credit score.
 
 - employee in charge of approving the credit loans (three main stakeholders): could get in trouble/fired for directly approving False Positives, especially with larger loans - larger consequence for a FP than a FN
+
+- society at large: have a stake in overall loan rate and who gets approved for a loan
+- economy and such
 
 FINAL OUTLINE
 
@@ -152,11 +155,22 @@ rubric={reasoning:100}
 
 </div>
 
-OUTLINE SUBMITTED BY THE END OF THE LAB (if applicable)
+OUTLINE SUBMITTED BY THE END OF THE LAB (if applicable) Zhihao
 
-1.
+1. Separation: equal opportunity/equal odds; equalizes error rates across both groups
+   pros: ensures fairness for applicants while balancing some predictive accuracy
 
-2.
+- Would prevent inadvertent discrimination by the model against certain demographic groups.
+  cons: may not optimize for most accurate/best outcome for the banks
+
+If thinking about the banks: sufficiency would be the best criteria, but would preserve historical bias
+
+2. Stratify data by demographic characteristics, evaluate for all the error metrics
+
+- have access to historical and current loan data (stratifying controls for any demographic bias present in historical data)
+- we would be able to assess three of the four error metrics (False Positives may be harder, given loan timelines), False Negatives cannot be evaluated directly as we would not be able to tell if a rejected applicant would have paid the loan back
+- in order to evaluate more metrics, the banks can give loans to applicants that are deemed riskier (acceptable risk band, randomly select within that) to assess metrics like False Negatives.
+- this will bias the outcome to some degree as it is not total random selection
 
 FINAL OUTLINE
 
@@ -221,13 +235,33 @@ Enough preamble, let's get started!
 
 OUTLINE SUBMITTED BY THE END OF THE LAB (if applicable)
 
-A.
+A. Sean
 
-B.
+- zero recall and FN for predicting no recidivism because they did not predict non-recidivism, they focused on predicted recidivism positive classes
+- we can calculate all of them, based on the above confusion matrix diagram, given that we have all of FP, TP, FN, TN
+- The FPR is twice as large in the fairness metric table because it is normalized by the total number of actual negatives, versus the confusion matrix, which is normalized by the total number of samples.
 
-C.
+- take out recall (equal to accuracy or 0)
 
-D.
+B. Daniel
+
+- did not seem to chance the outcome much compared to strategy A, not helpful; confounders and the 'effect of race' on other predictors are still present
+
+- arrests do not necessarily mean a crime was actually committed, could be a mistaken identity or wrongful arrest
+
+C. Victoria
+pro: can reduce racial bias effects in data and ensures a more equalized outcome
+
+- balancing TP and FP rates so that each group has comparable rates
+  cons: may sacrifice predictive quality and accuracy
+- may artifically create another type of unfairness
+
+D. Victoria
+potential interaction effects being ignored, now we are correcting just for individual feature effects
+
+- agree that this is probably the 'best' method when balancing accuracy and fairness with this dataset
+- may end up overcorrecting, in this case accuracy did stay high, but it is possible to compound bias corrections when features may have related effects
+- does not control for other confounders
 
 FINAL OUTLINE
 
@@ -245,9 +279,32 @@ A.
 
 B.
 
-C.
+C. This approach involves optimizing decision thresholds after the model has made its predictions to ensure the two demographic groups have equal error rates.
 
-D.
+Pros: reduces between-group disparities
+
+> any explicitly harmful bias (like the direct critique that African-Americans have unfairly high FP rates) is reduced
+> mathematically equal outcome is guaranteed, by forcing the TP and FP rates to be equal across the groups
+
+Cons: accuracy-fairness trade-off and creates artificial unfairness
+
+> the model is no longer optimizing JUST for accuracy, so other performance metrics like Recall may drop
+> the model becomes 'worse' for the sake of being fair
+> this method of equalizing degrades accuracy for the priviliged group instead of increasing accuracy for the disadvantaged group, which may serve to create a different kind of unfairness for individuals
+
+D. This approach directly integrates fairness-centered constaints into the model's training process so that it is learned throughout
+
+Pros: optimal fairness-accuracy tradeoff (thus far)
+
+> out of all listed methods, this one seems to be the most robust and balanced approach for both fairness and accuracy
+> overall accuracy and other performance metrics kept high while mitigating bias
+
+Cons: interaction effects, confounders, and overcorrection
+
+> any nuanced interaction effects (intersectionality) is ignored by correcting for features one at a time
+> correcting for single marginal effects does not account for intersectional bias (such as race interacting with age)
+> although accuracy stayed high in this case, there is a risk of overcorrecting with the balancing and sacrificing accuracy by penalizing sensitive, highly correlated features
+> there may be other confounder variables or 'invisible' effects that are not being controlled for within this model, such as historical data (e.g. previous arrests) that is already filled with bias
 
 ## Question 2.4 (Challenging)
 
