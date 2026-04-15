@@ -275,7 +275,16 @@ D.
 
 YOUR ANSWERS HERE
 
-A.
+A. 
+
+1. The reason that zeros and warnings are in the fairness metric table is because we are seperating the data into four group. These are African American defendants who recidivated, African American defendants who did not recidivate, white defendants who recidivated, and white defendants who did not recidivate. Therefore, for the groups where the positive class does not exist (those who did not recidivate), the recall is zero since there are no true positives (which will also raise a warning). It is the opposite for the groups that did recidivate, where the false positive rate is zero because negatives are not included.
+
+2. All of the fairness metrics can be derived from the confusion matrix, as we are given values for TP, FP, TN and FN. As long as we have these basics metrics and we know the proportion of subjects in each class, we can calculate all of the fairness metrics. For example, FPR is FP / (FP + TN) and FDR is FP / (FP + TP).
+
+3. The confusion matrix is normalized by the number of samples in each demographic group. On the other hand, each row in the fairness metric table is normalized by the demographic group and the outcome (recidivism or not). Therefore, the FPR difference in the confusion matrix will not be the same as the FPR difference in the fairness metric table. The fairness metric table's FPR is conditioned only on actual non-recidivists, while the confusion matrix's FPR is conditioned on the total number of samples.
+
+4. We believe that the choice of fairness metrics is good, as it includes equalized odds, sufficiency, and independence metrics. However, we also feel that including the Predictive Parity metric would have been useful (used by Northpointe), which looks at the proportion of defendents that re-offended among those with similar scores.  A metric we feel may be unnecessary is Accuracy, as it is less informative, can be misleading, and does not capture group disparities.
+
 
 B.
 
