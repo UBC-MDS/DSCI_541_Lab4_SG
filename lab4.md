@@ -278,6 +278,11 @@ YOUR ANSWERS HERE
 A.
 
 B.
+1. This does not seem to be a useful strategy to mitigate the disparate impact because the scores within the confusion matrix for African-Americans across strategies (“do nothing” and “remove race”) are virtually unchanged. Regardless of the intent of the decision to remove the demographic feature, the result still shows a disparate impact. 
+
+One reason for this could be the case is because as we learned in past lectures there could be confounding features that can still point to someone’s race. For example, ZIP codes, conviction location, or even name. 
+
+2. It is important because when someone is arrested that does not mean they are guilty of a crime per se. Contrastly, if someone re-offends, they are guilty of a crime. The article posits that African-Americans are historically more likely to be victims of unjust arrests. If this is indeed true, then this model is biased in that more African-Americans will be arrested by virtue of their race. Thus, if a model is trained on predicting if a criminal will be re-arrested it is likely that the prediction will reflect the inequity that purportedly exists within law enforcement. Additionally, by using arrests instead of reoffending as a metric there is the possible errors of mistaken identity or wrongful arrest which could also lead to unfair outcomes. 
 
 C. This approach involves optimizing decision thresholds after the model has made its predictions to ensure the two demographic groups have equal error rates.
 
