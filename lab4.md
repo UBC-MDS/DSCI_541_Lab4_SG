@@ -329,9 +329,24 @@ FINAL OUTLINE
 
 YOUR ANSWERS HERE
 
-1.  
+1. I would recommend that the bank use separation to balance its model predictions
+between groups in order to prevent disparate real-world harm while being
+fair to qualified applicants from the different groups. It means equal opportunity and odds.
+True Positive Rates (Recall) and False Positive Rates are also equal across groups. I picked this one
+because it ensures fairness for loan applicants at banks while balancing some predictive accuracy.
+Separation would also prevent inadvertent discrimination against certain demographic groups caused
+by the model. The downside is that it may not optimize for the most accurate/best outcome for the banks if there
+are historical bias. For example, a specific credit score such as 700 might actually represent a different probability of default for different demographic groups. 
 
-2.  
+2. We can review if the algorithm is doing a good job after it is
+implemented by stratifying data by demographic characteristics and evaluating for all the
+error metrics. When evaluating or reviewing how the algorithm is doing, we have access to
+historical and current loan data. Stratifying controls can be used to check any
+demographic bias presented in historical data. we would be able to assess three of the four error
+metrics. False Negatives cannot be evaluated directly as we would not be able to tell if a
+rejected applicant would have paid the loan back. In order to evaluate more metrics, the banks
+can give loans to applicants that are deemed riskier within acceptable risk band randomly
+to assess metrics like False Negatives.
 
 ## Question 2.3 -- Assessing and mitigating unfairness
 
